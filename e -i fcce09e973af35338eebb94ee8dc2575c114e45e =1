@@ -1,0 +1,65 @@
+[33mcommit 1554fc949c59206740faae03b69542e8d45b48c4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 15:53:49 2024 -0500
+
+    deployed storage and functions
+
+[33mcommit 81e9dcbc5ca59708e9498ba6853f808e73361023[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 11:14:01 2024 -0500
+
+    again modified few files in backend 2
+
+[33mcommit b1d35bfae0e2310d3fadae1cdadf29fb25dab3bf[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 11:11:23 2024 -0500
+
+    again modified few files in backend 2
+
+[33mcommit 1229c3c3391b5e3b928e120234b8ab297d32a334[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 11:09:04 2024 -0500
+
+    again modified few files in backend
+
+[33mcommit b1bdd40edd8bc44eb46315e4f69f849b9bb7cecc[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 10:54:59 2024 -0500
+
+    few changes in frontend and backend
+
+[33mcommit 35bcd29889212f0fae0e22d070192b5c944b2561[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 10:42:51 2024 -0500
+
+    few changes in frontend and backend
+
+[33mcommit fcce09e973af35338eebb94ee8dc2575c114e45e[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sat Nov 23 10:04:51 2024 -0500
+
+    few changes in frontend and backend
+
+[33mcommit cf2cf26fc23ca0f0fdadfe30e5021d9d112d31b3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Thu Nov 21 19:56:39 2024 -0500
+
+    added backend, connected to CORS
+
+[33mcommit f441ea4206a74160fb9b16e208709712574e0175[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Tue Nov 19 23:54:02 2024 -0500
+
+    add ed  back end
+
+[33mcommit 5cf61ceb0b91253151399fb8a611e4a9dcec5919[m
+Author: guruquebec <guruquebec@yahoo.ca>
+Date:   Sun Nov 17 20:07:22 2024 -0500
+
+    adding counter to javascript
+
+[33mcommit a4edc2d007eddf7e33f9d1ca973dc0d5fa4a7104[m
+Author: guruquebec <73050080+guruquebec@users.noreply.github.com>
+Date:   Sun Nov 17 18:27:48 2024 -0500
+
+    Initial commit
