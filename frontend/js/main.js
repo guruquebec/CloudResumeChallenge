@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded',(event)=> {
 })
 
 
-
+const functionapiURL = 'https://httpsecond.azurewebsites.net/api/httpsecond?code=wS4qH5hUehhw-ZwwexF3ifR2DemaLn7Jtnj86QTRIG20AzFukV73WA%3D%3D'
 const functionApi = 'http://localhost:7071/api/httpsecond';
 
 
