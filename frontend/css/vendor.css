@@ -368,9 +368,9 @@ pre[class*="language-"] {
 }
 
 :root {
-    /*
+    
     --swiper-pagination-color: var(--swiper-theme-color);
-    */
+    
 }
 
 .swiper-pagination {
@@ -575,7 +575,7 @@ button.swiper-pagination-bullet {
 .swiper-scrollbar {
     border-radius: 10px;
     position: relative;
-    -ms-touch-action: none;
+    touch-action: none;
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -644,9 +644,9 @@ button.swiper-pagination-bullet {
 /* Preloader */
 
 :root {
-    /*
+    
     --swiper-preloader-color: var(--swiper-theme-color);
-    */
+    
 }
 
 .swiper-lazy-preloader {
