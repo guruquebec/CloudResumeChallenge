@@ -5,10 +5,13 @@ from azure.cosmos import CosmosClient, exceptions
 from azure.cosmos.partition_key import PartitionKey
 import json
 import requests
-from function_app.py import httpsecond
+import credits
 
 #adding connection string to the function
 connectionString = os.environ["AzureConnectionString"]
+#(f"echo AzureConnectionString = {AzureConnectionString}")
+
+
 client = CosmosClient.from_connection_string(connectionString)
 
 
@@ -34,7 +37,9 @@ def test_resume_counter():
     initial_count = get_cosmosdbcount()
 
     # Increment count in Cosmos DB with a new API call
-    req = requests.get("https://httpsecond.azurewebsites.net/api/httpsecond?code=4Ydrtk3miGpE4Vn9T6LkXTXiyXrZkfBjLHiNg_YOBwEGAzFuIMQ7tQ%3D%3D")
+    req = requests.get(f"https://httpsecond.azurewebsites.net/api/httpsecond?code={credits.url_key}")
+    #response = requests.get(f"https://httpsecond.azurewebsites.net/api/httpsecond?code={credits.url_key}")
+
     httpsecond(req)
 
     new_count = get_cosmosdbcount()
