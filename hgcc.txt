@@ -1,0 +1,184 @@
+az ad sp create-for-rbac --name secondresumerbac --role contributor --scopes /subscriptions/lkdflklsdfklkjsdj/resourceGroups/secondresumeRG --sdk-auth
+
+# Install Azure PowerShell module
+Install-Module -Name Az -Force -AllowClobber -Verbose
+
+# Connect to Azure
+Connect-AzAccount
+
+# Create the service principal and assign the role
+$sp = New-AzADServicePrincipal -DisplayName "secondresumesp" -Role "Contributor" -Scope "/subscriptions/c1bc0139-18ce-42de-846b-9f4adbaeff4d/resourceGroups/resumechallengerg"
+
+# Output the service principal credentials
+$sp | ConvertTo-Json -Depth 3
+
++++++++++++++++++++++++++++++++
+{
+    "AccountEnabled":  true,
+    "AddIn":  [
+
+              ],
+    "AlternativeName":  [
+
+                        ],
+    "AppDescription":  null,
+    "AppDisplayName":  "secondresumesp",
+    "AppId":  "5225a3cf-ec97-4ef2-8e77-2484024172a8",
+    "AppOwnerOrganizationId":  "5a55c555-1735-47a1-b799-67e363a5ad81",
+    "AppRole":  [
+
+                ],
+    "AppRoleAssignedTo":  null,
+    "AppRoleAssignment":  null,
+    "AppRoleAssignmentRequired":  false,
+    "ApplicationTemplateId":  null,
+    "ClaimsMappingPolicy":  null,
+    "CreatedObject":  null,
+    "DelegatedPermissionClassification":  null,
+    "DeletedDateTime":  null,
+    "Description":  null,
+    "DisabledByMicrosoftStatus":  null,
+    "DisplayName":  "secondresumesp",
+    "Endpoint":  null,
+    "FederatedIdentityCredentials":  null,
+    "HomeRealmDiscoveryPolicy":  null,
+    "Homepage":  null,
+    "Id":  "e8b9fe52-847c-4f9e-8f46-36eceb2a2b40",
+    "Info":  {
+                 "LogoUrl":  null,
+                 "MarketingUrl":  null,
+                 "PrivacyStatementUrl":  null,
+                 "SupportUrl":  null,
+                 "TermsOfServiceUrl":  null
+             },
+    "KeyCredentials":  [
+
+                       ],
+    "LoginUrl":  null,
+    "LogoutUrl":  null,
+    "MemberOf":  null,
+    "Note":  null,
+    "NotificationEmailAddress":  [
+
+                                 ],
+    "Oauth2PermissionGrant":  null,
+    "Oauth2PermissionScope":  [
+
+                              ],
+    "OdataId":  null,
+    "OdataType":  "#microsoft.graph.serviceprincipal",
+    "OwnedObject":  null,
+    "Owner":  null,
+    "PasswordCredentials":  [
+                                {
+                                    "CustomKeyIdentifier":  null,
+                                    "DisplayName":  null,
+                                    "EndDateTime":  "\/Date(1763995046625)\/",
+                                    "Hint":  "8zO",
+                                    "KeyId":  "6292a73a-842b-422e-ac1c-9e1edb2b5002",
+                                    "SecretText":  "8zO8Q~V0ZCbGzNqHsa4iYIJ0Vni31JpCksWa2dfo",
+                                    "StartDateTime":  "\/Date(1732459046625)\/"
+                                }
+                            ],
+    "PreferredSingleSignOnMode":  null,
+    "PreferredTokenSigningKeyThumbprint":  null,
+    "ReplyUrl":  [
+
+                 ],
+    "SamlSingleSignOnSetting":  {
+                                    "RelayState":  null
+                                },
+    "ServicePrincipalName":  [
+                                 "5225a3cf-ec97-4ef2-8e77-2484024172a8"
+                             ],
+    "ServicePrincipalType":  "Application",
+    "SignInAudience":  "AzureADMyOrg",
+    "Tag":  [
+
+            ],
+    "TokenEncryptionKeyId":  null,
+    "TokenIssuancePolicy":  null,
+    "TokenLifetimePolicy":  null,
+    "TransitiveMemberOf":  null,
+    "AdditionalProperties":  {
+                                 "@odata.context":  "https://graph.microsoft.com/v1.0/$metadata#servicePrincipals/$entity",  
+                                 "createdDateTime":  "2024-11-24T14:37:30Z",
+                                 "resourceSpecificApplicationPermissions":  [
+
+                                                                            ],
+                                 "verifiedPublisher":  {
+
+                                                       }
+                             }
+}
++++++++++++++++++++++++++++++++++++
+
+name: deploy_frontend
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'frontend/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CloudResumeChallenge/AZURE_CREDENTIALS }}
+
+      - name: Upload to blob storage
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch --account-name httpsecond --auth-mode key -d '$web' -s frontend/
+
+      - name: Purge CDN endpoint
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az cdn endpoint purge --content-paths "/*" --profile-name "httpsecond" --name "httpsecond" --resource-group "resumechallengerg"
+
+      - name: Logout from Azure
+        run: |
+          az logout
+        if: always()
+
+222222222222222222222222222222222222222222222222222222222222222222222222222
+name: deploy_frontend
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'frontend/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Upload to blob storage
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch --account-name httpsecond --auth-mode key -d '$web' -s frontend/
+
+      - name: Purge CDN endpoint
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az cdn endpoint purge --content-paths "/*" --profile-name "httpsecond" --name "httpsecond" --resource-group "resumechallengerg"
+
+      - name: Logout from Azure
+        run: |
+          az logout
+        if: always()
+
